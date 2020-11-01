@@ -87,15 +87,20 @@ def create_app(test_config=None):
         data = request.get_json()
         try:
             new_question = Question(
-                question=data.get("question"),
-                answer=data.get("answer"),
-                difficulty=data.get("difficulty"),
-                category=data.get("category"),
+                question=data.get('question'),
+                answer=data.get('answer'),
+                difficulty=data.get('difficulty'),
+                category=data.get('category'),
             )
             new_question.insert()
 
         except:
             abort(422)
+        
+        return jsonify({
+            'success': True,
+            'total_questions': len(Question.query.all())
+        })
 
     @app.route('/categories/<int:category_id>/questions')
     def get_questions_by_category(category_id):
@@ -165,6 +170,3 @@ def create_app(test_config=None):
         }), 400
 
     return app
-
-
-
