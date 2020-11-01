@@ -66,12 +66,14 @@ DELETE '/questions/<int:question_id>'
 - Returns: An object with a single key, categories, that contains a object of id: category_string key:value pairs.
 - curl -X GET http://127.0.0.1:5000/categories
 
-{'1' : "Science",
-'2' : "Art",
-'3' : "Geography",
-'4' : "History",
-'5' : "Entertainment",
-'6' : "Sports"}
+{
+   '1' : "Science",
+   '2' : "Art",
+   '3' : "Geography",
+   '4' : "History",
+   '5' : "Entertainment",
+   '6' : "Sports"
+}
 
 ### GET '/questions'
 - Request Arguments: None
