@@ -1,12 +1,7 @@
-FSND-Trivia_Api
+# FSND-Trivia_Api
+## Introduction
 
-The application must:
-Display questions - both all questions and by category. Questions should show the question, category and difficulty rating by default and can show/hide the answer.
-Delete questions.
-Add questions and require that they include question and answer text.
-Search for questions based on a text query string.
-Play the quiz game, randomizing either all questions or within a specific category.
-Completing this trivia app will give you the ability to structure plan, implement, and test an API - skills essential for enabling your future applications to communicate with others.
+Trivia is a application that display questions - both all questions and by category. Questions should show the question, category and difficulty rating by default and can show/hide the answer.
 
 # Instructions
 # Full Stack Trivia API Frontend
