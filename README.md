@@ -30,7 +30,7 @@ To view it in the browser open [http://localhost:3000](http://localhost:3000).
  
 
 
-# Full Stack Trivia API Backend
+## Full Stack Trivia API Backend
 
 ## Getting Setup
 
