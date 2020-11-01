@@ -249,12 +249,11 @@ DELETE '/questions/<int:question_id>'
 
 ### POST '/questions/create'
 - Request Arguments: None
-- Returns: An object of question id, status if it is success or not and total of questions.
+- Returns: An object of status if it is success or not and total of questions.
 - curl -X POST -H "Content-Type: application/json" http://127.0.0.1:5000/questions/create  -d '{"question":"Test","answer":"Test","category":"1","difficulty":"1"}'
 
 ```json
 {
-    "question_id": 1,
     "success": true, 
     "total_questions": 19
 }
