@@ -36,7 +36,6 @@ To view it in the browser open [http://localhost:3000](http://localhost:3000).
 
 1- Database Setup
 With Postgres running, restore a database using the trivia.psql file provided. From the backend folder in terminal run:
-```bash
 psql trivia < trivia.psql
 
 2- Initialize and activate a virtualenv using:
@@ -54,7 +53,7 @@ export FLASK_ENV=development
 python3 __init__.py
 
 
-Endpoints
+## Endpoints
 GET  '/categories'
 GET  '/questions'
 GET  '/categories/<int:category_id>/questions'
@@ -62,7 +61,7 @@ POST '/questions/create'
 POST '/quizzes'
 DELETE '/questions/<int:question_id>'
 
-GET '/categories'
+### GET '/categories'
 - Request Arguments: None
 - Returns: An object with a single key, categories, that contains a object of id: category_string key:value pairs. 
 {'1' : "Science",
@@ -72,7 +71,7 @@ GET '/categories'
 '5' : "Entertainment",
 '6' : "Sports"}
 
-GET '/questions'
+### GET '/questions'
 - Request Arguments: None
 - Returns: Returns a list of categories and questions, total of questions.
 
@@ -161,7 +160,7 @@ GET '/questions'
   "total_questions": 31
 }
 
-GET '/categories/<int:category_id>/questions'
+### GET '/categories/<int:category_id>/questions'
 - Request Arguments: None
 - Returns: Returns a object of questions that belong to a category Id.
 
@@ -236,7 +235,7 @@ GET '/categories/<int:category_id>/questions'
   "total_questions": 9
 }
 
-POST '/questions/create'
+### POST '/questions/create'
 - Request Arguments: None
 - Returns: An object of question id, status if it is success or not and total of questions.
 
@@ -246,7 +245,7 @@ POST '/questions/create'
     "total_questions": 19
 }
 
-POST '/quizzes'
+### POST '/quizzes'
 - Request Arguments: None
 - Returns: An object of random questions within the given category, if provided, and that is not one of the previous questions.
 
@@ -255,7 +254,7 @@ POST '/quizzes'
     "question": "What is the largest lake in Africa?"
 }
 
-DELETE '/questions/<int:question_id>'
+### DELETE '/questions/<int:question_id>'
 - Request Arguments: None
 - Returns: An object of question id deleted, status if it is success or not and total of questions.
 
