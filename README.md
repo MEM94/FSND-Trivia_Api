@@ -63,7 +63,9 @@ DELETE '/questions/<int:question_id>'
 
 ### GET '/categories'
 - Request Arguments: None
-- Returns: An object with a single key, categories, that contains a object of id: category_string key:value pairs. 
+- Returns: An object with a single key, categories, that contains a object of id: category_string key:value pairs.
+curl -X GET http://127.0.0.1:5000/categories
+
 {'1' : "Science",
 '2' : "Art",
 '3' : "Geography",
@@ -74,6 +76,8 @@ DELETE '/questions/<int:question_id>'
 ### GET '/questions'
 - Request Arguments: None
 - Returns: Returns a list of categories and questions, total of questions.
+curl -X GET http://127.0.0.1:5000/questions 
+
 
 {
   "categories": {
@@ -163,6 +167,8 @@ DELETE '/questions/<int:question_id>'
 ### GET '/categories/<int:category_id>/questions'
 - Request Arguments: None
 - Returns: Returns a object of questions that belong to a category Id.
+curl -X GET http://127.0.0.1:5000/categories/1/questions
+
 
 {
   "current_category": "Science",
@@ -238,6 +244,7 @@ DELETE '/questions/<int:question_id>'
 ### POST '/questions/create'
 - Request Arguments: None
 - Returns: An object of question id, status if it is success or not and total of questions.
+curl -X POST -H "Content-Type: application/json" http://127.0.0.1:5000/questions/create  -d '{"question":"Test","answer":"Test","category":"1","difficulty":"1"}'
 
 {
     "question_id": 1,
@@ -257,6 +264,9 @@ DELETE '/questions/<int:question_id>'
 ### DELETE '/questions/<int:question_id>'
 - Request Arguments: None
 - Returns: An object of question id deleted, status if it is success or not and total of questions.
+curl -X DELETE http://127.0.0.1:5000/questions/50
+
+
 
 {
   "deleted": 50,
