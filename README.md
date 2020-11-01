@@ -44,7 +44,7 @@ source env/Scripts/activate
 pip install -r requirements.txt
 
 3- Run the development server:
-export FLASK_APP=myapp
+export FLASK_APP=myapp<br>
 export FLASK_ENV=development
 python3 __init__.py
 
