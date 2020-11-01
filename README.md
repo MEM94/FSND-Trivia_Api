@@ -3,8 +3,8 @@
 
 Trivia is a application that display questions - both all questions and by category. Questions should show the question, category and difficulty rating by default and can show/hide the answer.
 
-# Instructions
-# Full Stack Trivia API Frontend
+## Instructions
+## Full Stack Trivia API Frontend
 
 ## Getting Setup
 
