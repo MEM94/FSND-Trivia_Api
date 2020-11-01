@@ -6,6 +6,13 @@ from random import sample
 from models import setup_db, db, Question, Category
 
 
+def pagination(request):
+    page = request.args.get('page', 1, type=int)
+    start = (page - 1) * 10
+    end = start + 10
+
+    return start, end
+
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__)
@@ -42,9 +49,7 @@ def create_app(test_config=None):
         data_category = {}
         categories = Category.query.all()
         questions = Question.query.all()
-        page = request.args.get('page', 1, type=int)
-        start = (page - 1) * 10
-        end = start + 10
+        paginate = pagination(request)
 
         for question in questions:
             data_questions.append({
@@ -60,7 +65,7 @@ def create_app(test_config=None):
 
         return jsonify({
             'success': True,
-            'questions': data_questions[start:end],
+            'questions': data_questions[min(paginate):max(paginate)],
             'total_questions': len(questions),
             'categories': data_category
         })
@@ -98,9 +103,7 @@ def create_app(test_config=None):
         data_questions = []
         category = Category.query.filter_by(id=category_id).one_or_none()
         questions = Question.query.filter_by(category=category_id).all()
-        page = request.args.get('page', 1, type=int)
-        start = (page - 1) * 10
-        end = start + 10
+        paginate = pagination(request)
 
         for question in questions:
             data_questions.append({
@@ -113,7 +116,7 @@ def create_app(test_config=None):
 
         return jsonify({
             'success': True,
-            'questions': data_questions[start:end],
+            'questions': data_questions[min(paginate):max(paginate)],
             'total_questions': len(questions),
             'current_category': category.type
         })
@@ -162,3 +165,6 @@ def create_app(test_config=None):
         }), 400
 
     return app
+
+
+
