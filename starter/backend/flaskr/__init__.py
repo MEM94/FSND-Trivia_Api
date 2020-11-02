@@ -73,7 +73,7 @@ def create_app(test_config=None):
     @app.route('/questions/<int:question_id>', methods=['DELETE'])
     def delete_question(question_id):
         try:
-            Question.query.filter_by(id=question_id).delete()
+            Question.query.get(question_id).delete()
             return jsonify({
                 'success': True,
                 'deleted': question_id
