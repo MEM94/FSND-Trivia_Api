@@ -102,6 +102,41 @@ def create_app(test_config=None):
             'total_questions': len(Question.query.all())
         })
 
+    @app.route('/questions/search', methods=['POST'])
+    def search_question():
+        data = request.get_json()
+        data_questions = []
+        data_category = {}
+        
+        try:
+            search_term = data.get('searchTerm')
+
+            if search_term == '':
+                abort(422)
+
+            questions = Question.query.filter(
+                Question.question.ilike(f'%{search_term}%')).all()
+            
+            paginate = pagination(request)
+
+            for question in questions:
+                data_questions.append({
+                    'id': question.id,
+                    'question': question.question,
+                    'answer': question.answer,
+                    'difficulty': question.difficulty,
+                    'category': question.category,
+                })
+
+        except:
+            abort(422)
+        
+        return jsonify({
+            'success': True,
+            'questions': data_questions[min(paginate):max(paginate)],
+            'total_questions': len(Question.query.all()),
+        })
+
     @app.route('/categories/<int:category_id>/questions')
     def get_questions_by_category(category_id):
 
@@ -131,14 +166,14 @@ def create_app(test_config=None):
 
         data = request.get_json()
         previous_questions = data.get('previous_questions')
-        quizCategory = data.get('quiz_category')
+        quiz_category = data.get('quiz_category')
 
-        if (quizCategory['id'] == '0'):
+        if (quiz_category['id'] == '0'):
             questions = Question.query.all()
 
         else:
             questions = Question.query.filter_by(
-                category=quizCategory['id']).all()
+                category=quiz_category['id']).all()
 
         return jsonify({
             'success': True,
