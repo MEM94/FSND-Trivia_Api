@@ -1,8 +1,8 @@
 import os
-from flask import Flask, request, abort, jsonify
+from flask import Flask, request, abort, jsonify, json
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
-from random import sample
+import random
 from models import setup_db, db, Question, Category
 
 
@@ -168,16 +168,19 @@ def create_app(test_config=None):
         previous_questions = data.get('previous_questions')
         quiz_category = data.get('quiz_category')
 
-        if (quiz_category['id'] == '0'):
+        if quiz_category['id'] == 0:
             questions = Question.query.all()
+            print(questions)
 
         else:
             questions = Question.query.filter_by(
                 category=quiz_category['id']).all()
 
+        questions = [question.format() for question in questions]
+
         return jsonify({
             'success': True,
-            'question': sample(questions, len(questions))
+            'question': random.choice(questions),
         })
 
     @app.errorhandler(404)
