@@ -170,13 +170,15 @@ def create_app(test_config=None):
 
         if quiz_category['id'] == 0:
             questions = Question.query.all()
-            print(questions)
 
         else:
             questions = Question.query.filter_by(
                 category=quiz_category['id']).all()
 
-        questions = [question.format() for question in questions]
+        
+        questions = [question.format()
+                     for question in questions if question.id not in previous_questions]
+
 
         return jsonify({
             'success': True,
