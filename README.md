@@ -59,6 +59,7 @@ GET  '/questions'
 GET  '/categories/<int:category_id>/questions'
 POST '/questions/create'
 POST '/quizzes'
+POST '/questions/search'
 DELETE '/questions/<int:question_id>'
 
 ### GET '/categories'
@@ -266,6 +267,62 @@ DELETE '/questions/<int:question_id>'
 {
     "success": true, 
     "question": "What is the largest lake in Africa?"
+}
+```
+
+### POST '/questions/search'
+- Request Arguments: None
+- Returns: An object of questions that has the same searchTearm.
+- curl -X POST http://127.0.0.1:5000/questions/search -H "Content-Type: application/json" -d '{"searchTerm": "Test"}'
+
+```json
+{
+  "questions": [
+    {
+      "answer": "111",
+      "category": 1,
+      "difficulty": 1,
+      "id": 31,
+      "question": "Test"
+    },
+    {
+      "answer": "111",
+      "category": 1,
+      "difficulty": 1,
+      "id": 32,
+      "question": "Test"
+    },
+    {
+      "answer": "22",
+      "category": 3,
+      "difficulty": 1,
+      "id": 33,
+      "question": "Test1"
+    },
+    {
+      "answer": "111",
+      "category": 1,
+      "difficulty": 3,
+      "id": 34,
+      "question": "Test1"
+    },
+    {
+      "answer": "22",
+      "category": 1,
+      "difficulty": 1,
+      "id": 36,
+      "question": "test6666655"
+    },
+    {
+      "answer": "TestAnswer",
+      "category": 5,
+      "difficulty": 5,
+      "id": 37,
+      "question": "TestQuestion"
+    }
+  ],
+  "success": true,
+  "total_questions": 33
 }
 ```
 
